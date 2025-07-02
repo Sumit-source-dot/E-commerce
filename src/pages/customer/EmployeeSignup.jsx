@@ -30,15 +30,24 @@ const CustomerSignup = () => {
       return;
     }
 
-    const existingUsers = JSON.parse(localStorage.getItem("customerUsers")) || [];
-    if (existingUsers.some(user => user.email === email)) {
+    const existingEmployees = JSON.parse(localStorage.getItem("employees")) || [];
+    if (existingEmployees.some(emp => emp.email === email)) {
       setErrors({ email: "Email already registered" });
       return;
     }
 
-    const newUser = { name, email, password };
-    localStorage.setItem("customerUsers", JSON.stringify([...existingUsers, newUser]));
-    login({ role: "customer", email });
+    const newEmployee = { 
+      id: Date.now().toString(),
+      name, 
+      email, 
+      password,
+      role: "employee",
+      joinDate: new Date().toISOString(),
+      status: "active"
+    };
+    
+    localStorage.setItem("employees", JSON.stringify([...existingEmployees, newEmployee]));
+    login({ role: "employee", email });
     navigate("/");
   };
 
@@ -46,8 +55,8 @@ const CustomerSignup = () => {
     <div className="min-h-screen bg-gradient-to-br from-[#f0f9ff] to-[#e0f2fe] flex items-center justify-center p-4">
       <div className="w-full max-w-md bg-white rounded-2xl shadow-xl overflow-hidden">
         <div className="bg-[#0369a1] p-6 text-center">
-          <h1 className="text-2xl font-bold text-white">Create Your Account</h1>
-          <p className="text-blue-100 mt-1">Join our artisan marketplace community</p>
+          <h1 className="text-2xl font-bold text-white">Employee Registration</h1>
+          <p className="text-blue-100 mt-1">Join our artisan marketplace team</p>
         </div>
 
         <form onSubmit={handleSignup} className="p-6 space-y-4">
@@ -95,12 +104,12 @@ const CustomerSignup = () => {
             type="submit"
             className="w-full bg-[#0369a1] hover:bg-[#0284c7] text-white font-medium py-3 px-4 rounded-lg transition duration-300"
           >
-            Sign Up
+            Register
           </button>
 
           <div className="text-center text-sm text-gray-600 pt-2">
             Already have an account?{" "}
-            <Link to="/customer/login" className="text-[#0369a1] hover:underline font-medium">
+            <Link to="/employee/login" className="text-[#0369a1] hover:underline font-medium">
               Log in
             </Link>
           </div>

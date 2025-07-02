@@ -20,8 +20,8 @@
 │   │   │   ├── Shop.jsx
 │   │   │   ├── Cart.jsx
 │   │   │   ├── Artisans.jsx
-│   │   │   ├── CustomerLogin.jsx
-│   │   │   └── CustomerSignup.jsx
+│   │   │   ├── EmployeeLogin.jsx
+│   │   │   └── EmployeeSignup.jsx
 │   │   ├── /admin
 │   │   │   ├── AdminLogin.jsx
 │   │   │   ├── AdminSignup.jsx

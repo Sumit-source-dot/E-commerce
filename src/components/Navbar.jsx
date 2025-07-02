@@ -71,14 +71,14 @@ const Navbar = () => {
                     className="block px-4 py-2 text-sm text-[#2B2B2B] hover:bg-[#F5B700]/10 hover:text-[#E86C3B] transition duration-300"
                     onClick={() => setDropdownOpen(false)}
                   >
-                    Customer Login
+                    Employee Login
                   </Link>
                   <Link
                     to="/customer/signup"
                     className="block px-4 py-2 text-sm text-[#2B2B2B] hover:bg-[#F5B700]/10 hover:text-[#E86C3B] transition duration-300"
                     onClick={() => setDropdownOpen(false)}
                   >
-                    Customer Signup
+                    Employee Signup
                   </Link>
                 </>
               ) : (
