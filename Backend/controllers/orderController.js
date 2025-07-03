@@ -9,26 +9,24 @@ export const createOrder = async (req, res) => {
     const shippingAddress = JSON.parse(req.body.shippingAddress);
     const totalAmount = req.body.totalAmount;
 
+    console.log('📦 Parsed Shipping Address:', shippingAddress);
+
     if (!items || !Array.isArray(items) || items.length === 0) {
       return res.status(400).json({ success: false, message: 'No items provided' });
     }
 
-    // ✅ Insert missing products into the Products collection
     const formattedItems = await Promise.all(items.map(async (item, index) => {
       if (!item.product || !mongoose.Types.ObjectId.isValid(item.product)) {
         throw new Error(`Invalid product ID at item ${index + 1}`);
       }
 
-      // 🔍 Check if product already exists
       const existing = await Product.findById(item.product);
-
-      // 🧠 Create product if it doesn't exist
       if (!existing) {
         await Product.create({
           _id: item.product,
           title: item.title || `Product ${index + 1}`,
           price: item.price,
-          thumbnail: item.thumbnail || 'default.jpg', // Optional: add default image
+          thumbnail: item.thumbnail || 'default.jpg',
           description: item.description || 'Auto-added during checkout'
         });
       }
@@ -41,6 +39,15 @@ export const createOrder = async (req, res) => {
     }));
 
     const paymentProof = req.file ? req.file.filename : null;
+
+    // ✅ Log just before creating order
+    console.log("🧾 Full Order Payload:", {
+      customer: req.customer._id,
+      items: formattedItems,
+      shippingAddress,
+      totalAmount,
+      paymentProof,
+    });
 
     const newOrder = new Order({
       customer: req.customer._id,
@@ -57,6 +64,7 @@ export const createOrder = async (req, res) => {
       message: 'Order placed successfully',
       orderId: newOrder._id,
     });
+
   } catch (error) {
     console.error('❌ Error in createOrder:', error.message);
     res.status(500).json({
