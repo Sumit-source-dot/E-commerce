@@ -1,7 +1,6 @@
 export const regionalProducts = [
-  // Kashmir Products
   {
-    id: 1,
+    _id: "66a2b301dc799600145a0001",
     title: "Pashmina Shawl",
     category: "Textiles",
     price: 3499,
@@ -15,7 +14,7 @@ export const regionalProducts = [
     discountPercentage: 15
   },
   {
-    id: 2,
+    _id: "66a2b301dc799600145a0002",
     title: "Kashmiri Saffron (1g)",
     category: "Food Specialties",
     price: 499,
@@ -26,7 +25,7 @@ export const regionalProducts = [
     addedDate: "2023-06-10"
   },
   {
-    id: 3,
+    _id: "66a2b301dc799600145a0003",
     title: "Walnut Wood Carving",
     category: "Handicrafts",
     price: 2199,
@@ -36,10 +35,8 @@ export const regionalProducts = [
     isLocalFavorite: true,
     addedDate: "2023-04-22"
   },
-
-  // Rajasthan Products
   {
-    id: 4,
+    _id: "66a2b301dc799600145a0004",
     title: "Blue Pottery Elephant",
     category: "Handicrafts",
     price: 1299,
@@ -52,7 +49,7 @@ export const regionalProducts = [
     discountPercentage: 10
   },
   {
-    id: 5,
+    _id: "66a2b301dc799600145a0005",
     title: "Rajasthani Mojari Shoes",
     category: "Textiles",
     price: 1799,
@@ -63,7 +60,7 @@ export const regionalProducts = [
     addedDate: "2023-03-05"
   },
   {
-    id: 6,
+    _id: "66a2b301dc799600145a0006",
     title: "Miniature Painting",
     category: "Artwork",
     price: 2899,
@@ -72,10 +69,8 @@ export const regionalProducts = [
     origin: { state: "Rajasthan", city: "Udaipur" },
     addedDate: "2023-07-12"
   },
-
-  // Kerala Products
   {
-    id: 7,
+    _id: "66a2b301dc799600145a0007",
     title: "Kerala Spices Box",
     category: "Food Specialties",
     price: 599,
@@ -88,7 +83,7 @@ export const regionalProducts = [
     discountPercentage: 5
   },
   {
-    id: 8,
+    _id: "66a2b301dc799600145a0008",
     title: "Coconut Shell Lamp",
     category: "Handicrafts",
     price: 899,
@@ -98,7 +93,7 @@ export const regionalProducts = [
     addedDate: "2023-05-30"
   },
   {
-    id: 9,
+    _id: "66a2b301dc799600145a0009",
     title: "Kasavu Mundu",
     category: "Textiles",
     price: 1599,
@@ -108,10 +103,8 @@ export const regionalProducts = [
     isBestSeller: true,
     addedDate: "2023-06-25"
   },
-
-  // Goa Products
   {
-    id: 10,
+    _id: "66a2b301dc799600145a0010",
     title: "Goan Cashew Nuts (500g)",
     category: "Food Specialties",
     price: 799,
@@ -122,7 +115,7 @@ export const regionalProducts = [
     addedDate: "2023-07-05"
   },
   {
-    id: 11,
+    _id: "66a2b301dc799600145a0011",
     title: "Sea Shell Wind Chime",
     category: "Souvenirs",
     price: 699,
@@ -133,7 +126,7 @@ export const regionalProducts = [
     addedDate: "2023-04-18"
   },
   {
-    id: 12,
+    _id: "66a2b301dc799600145a0012",
     title: "Bebinca (Goan Dessert)",
     category: "Food Specialties",
     price: 499,
@@ -146,7 +139,7 @@ export const regionalProducts = [
 
   // West Bengal Products
   {
-    id: 13,
+    _id: "66a2b301dc799600145a0013",
     title: "Darjeeling Tea (250g)",
     category: "Food Specialties",
     price: 899,
@@ -159,7 +152,7 @@ export const regionalProducts = [
     discountPercentage: 8
   },
   {
-    id: 14,
+    _id: "66a2b301dc799600145a0014",
     title: "Baluchari Saree",
     category: "Textiles",
     price: 4599,
@@ -169,7 +162,7 @@ export const regionalProducts = [
     addedDate: "2023-05-20"
   },
   {
-    id: 15,
+    _id: "66a2b301dc799600145a0015",
     title: "Dokra Art Elephant",
     category: "Handicrafts",
     price: 2499,
@@ -182,7 +175,7 @@ export const regionalProducts = [
 
   // Punjab Products
   {
-    id: 16,
+    _id: "66a2b301dc799600145a0016",
     title: "Phulkari Dupatta",
     category: "Textiles",
     price: 1999,
@@ -193,7 +186,7 @@ export const regionalProducts = [
     addedDate: "2023-06-15"
   },
   {
-    id: 17,
+    _id: "66a2b301dc799600145a0017",
     title: "Amritsari Papad (500g)",
     category: "Food Specialties",
     price: 299,
@@ -204,7 +197,7 @@ export const regionalProducts = [
     addedDate: "2023-07-01"
   },
   {
-    id: 18,
+    _id: "66a2b301dc799600145a0018",
     title: "Punjabi Jutti",
     category: "Textiles",
     price: 1499,
