@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
-
+import axios from "axios";
 const EmployeeLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -14,20 +14,15 @@ const handleLogin = async (e) => {
   setError("");
 
   try {
-    const res = await fetch("/api/employee/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
-    });
+    const res =await axios.post("/api/employee/login", {
+  email,
+  password,
+});
 
-    const data = await res.json();
 
-    if (!res.ok) {
-      setError(data.message || "Login failed");
-      return;
-    }
+      const data = res.data;
 
-    login({ role: "customer", email: data.user.email });
+    login({ role: "employee", email: data.user.email }); // ✅ Fixed role
     navigate("/");
   } catch (err) {
     console.error("Employee login error:", err.message);
@@ -74,7 +69,7 @@ const handleLogin = async (e) => {
               required
             />
             <div className="text-right mt-1">
-              <Link to="/forgot-password" className="text-xs text-[#0369a1] hover:underline">
+              <Link to="/employee/signup" className="text-xs text-[#0369a1] hover:underline">
                 Forgot password?
               </Link>
             </div>
@@ -89,7 +84,7 @@ const handleLogin = async (e) => {
 
           <div className="text-center text-sm text-gray-600 pt-2">
             Don't have an account?{" "}
-            <Link to="/customer/signup" className="text-[#0369a1] hover:underline font-medium">
+            <Link to="/employee/signup" className="text-[#0369a1] hover:underline font-medium">
               Sign up
             </Link>
           </div>

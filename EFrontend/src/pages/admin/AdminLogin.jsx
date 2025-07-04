@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
-
+import axios from "axios";
 const AdminLogin = () => {
   const navigate = useNavigate();
   const { login } = useAuth();
@@ -15,7 +15,7 @@ const handleLogin = async (e) => {
   setError("");
 
   try {
-    const res = await fetch("/api/admin/login", {
+    const res = await axios.post("/api/admin/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),

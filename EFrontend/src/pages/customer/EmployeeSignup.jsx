@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
-
+import axios from "axios";
 const EmployeeSignup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -29,27 +29,23 @@ const handleSignup = async (e) => {
     return;
   }
 
-  try {
-    const res = await fetch("/api/employee/signup", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, password }),
+    try {
+    const res = await axios.post("/api/employee/signup", {
+      name,
+      email,
+      password,
     });
 
-    const data = await res.json();
+    const data = res.data;
 
-    if (!res.ok) {
-      setErrors({ email: data.message || "Signup failed" });
-      return;
-    }
-
-    login({ role: "customer", email: data.user.email });
+    login({ role: "employee", email: data.user.email }); // ✅ Fixed role
     navigate("/");
   } catch (err) {
     console.error("Employee signup error:", err.message);
     setErrors({ email: "Something went wrong" });
   }
 };
+
 
 
   return (

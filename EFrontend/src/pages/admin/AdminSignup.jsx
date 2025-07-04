@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const AdminSignup = () => {
   const navigate = useNavigate();
@@ -12,31 +13,23 @@ const AdminSignup = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleSignup = async (e) => {
+const handleSignup = async (e) => {
   e.preventDefault();
   setError("");
 
+  console.log("Submitting Admin Signup:", { name, email, password }); // ✅ Debug log
+
   try {
-    const res = await fetch("/api/admin/signup", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, password }),
-    });
+    const res = await axios.post("/api/admin/signup", { name, email, password });
 
-    const data = await res.json();
-
-    if (!res.ok) {
-      setError(data.message || "Signup failed");
-      return;
-    }
-
-    login({ role: "admin", email: data.user.email });
+    login({ role: "admin", email: res.data.user.email });
     navigate("/admin");
   } catch (err) {
-    console.error("Signup error:", err.message);
-    setError("Something went wrong");
+    console.error("Signup error:", err);
+    setError(err.response?.data?.message || "Something went wrong");
   }
 };
+
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-[#F8F8F8]">
@@ -66,6 +59,7 @@ const AdminSignup = () => {
               </label>
               <input
                 id="name"
+                name="name"
                 type="text"
                 placeholder="Enter your full name"
                 className="w-full px-4 py-2 border border-[#5A5A5A]/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E86C3B]/50"
@@ -81,6 +75,7 @@ const AdminSignup = () => {
               </label>
               <input
                 id="email"
+                name="email"
                 type="email"
                 placeholder="admin@example.com"
                 className="w-full px-4 py-2 border border-[#5A5A5A]/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E86C3B]/50"
@@ -96,6 +91,7 @@ const AdminSignup = () => {
               </label>
               <input
                 id="password"
+                name="password"
                 type="password"
                 placeholder="Create a password"
                 className="w-full px-4 py-2 border border-[#5A5A5A]/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E86C3B]/50"
