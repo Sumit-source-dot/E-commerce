@@ -15,26 +15,18 @@ const handleLogin = async (e) => {
   setError("");
 
   try {
-    const res = await axios.post("/api/admin/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
-    });
+    const res = await axios.post("/api/admin/login", { email, password });
 
-    const data = await res.json();
-
-    if (!res.ok) {
-      setError(data.message || "Login failed");
-      return;
-    }
-
-    login({ role: "admin", email: data.user.email });
+    // ✅ If successful
+    const data = res.data;
+    login({ role: "admin", email: data.user.email }); // set context
     navigate("/admin");
   } catch (err) {
-    console.error("Login error:", err.message);
-    setError("Something went wrong");
+    console.error("Login error:", err.response?.data || err.message);
+    setError(err.response?.data?.message || "Login failed");
   }
 };
+
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-[#F8F8F8]">
