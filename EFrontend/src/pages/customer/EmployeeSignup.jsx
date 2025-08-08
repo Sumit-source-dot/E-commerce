@@ -30,7 +30,7 @@ const handleSignup = async (e) => {
   }
 
     try {
-    const res = await axios.post("https://e-commerce-omega-two-88.vercel.app/employee/signup", {
+    const res = await axios.post("https://e-commerce-omega-two-88.vercel.app/api/employee/signup", {
       name,
       email,
       password,

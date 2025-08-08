@@ -20,7 +20,7 @@ const handleSignup = async (e) => {
   console.log("Submitting Admin Signup:", { name, email, password }); // ✅ Debug log
 
   try {
-    const res = await axios.post("https://e-commerce-omega-two-88.vercel.app/admin/signup", { name, email, password });
+    const res = await axios.post("https://e-commerce-omega-two-88.vercel.app/api/admin/signup", { name, email, password });
 
     login({ role: "admin", email: res.data.user.email });
     navigate("/admin");
