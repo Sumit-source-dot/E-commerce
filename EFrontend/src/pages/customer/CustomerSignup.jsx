@@ -23,7 +23,7 @@ const CustomerSignup = () => {
     setError("");
     
     try {
-      await axios.post("/api/customers/signup", formData);
+      await axios.post("https://e-commerce-omega-two-88.vercel.app/customers/signup", formData);
       navigate("/customer/login", { 
         state: { successMessage: "Signup successful! Please log in." } 
       });
