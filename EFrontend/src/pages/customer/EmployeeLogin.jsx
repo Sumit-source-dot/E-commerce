@@ -14,7 +14,7 @@ const handleLogin = async (e) => {
   setError("");
 
   try {
-    const res =await axios.post("/api/employee/login", {
+    const res =await axios.post("https://e-commerce-omega-two-88.vercel.app/employee/login", {
   email,
   password,
 });
