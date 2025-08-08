@@ -13,24 +13,11 @@ dotenv.config();
 const app = express();
 
 // Connect DB
-connectDB();
-
-// Middleware
-const allowedOrigins = [
-  "https://e-commerce-r1x7.vercel.app",
-  "http://localhost:5173"
-   
-];
 
 app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      console.error("❌ CORS blocked request from:", origin);
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
+  origin: ["https://e-commerce-r1x7.vercel.app","http://localhost:5173"],
+  
+  
   credentials: true,
 }));
 
@@ -48,6 +35,7 @@ app.get("/", (req, res) => {
   res.send("🚀 Backend is live and connected!");
 });
 
+connectDB();
 // Server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
