@@ -18,7 +18,7 @@ connectDB();
 // Middleware
 const allowedOrigins = [
   "http://localhost:5173", // Local dev
-  "https://e-commerce-r1x7.vercel.app/" // Your deployed frontend
+  "https://e-commerce-r1x7.vercel.app" // Your deployed frontend
 ];
 
 app.use(cors({
