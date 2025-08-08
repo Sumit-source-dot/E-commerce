@@ -19,7 +19,7 @@ const CustomerLogin = () => {
     setError("");
     
     try {
-      const res = await axios.post("https://e-commerce-omega-two-88.vercel.app//customers/login", formData);
+      const res = await axios.post("https://e-commerce-omega-two-88.vercel.app/customers/login", formData);
       localStorage.setItem("customerToken", res.data.token);
       navigate("/checkout"); // or redirect where needed
     } catch (err) {
